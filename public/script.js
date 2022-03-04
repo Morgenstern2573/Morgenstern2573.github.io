@@ -16,10 +16,10 @@ function makeSticky(entries, observer) {
   for (entry of entries) {
     if (entry.isIntersecting) {
       nav.classList.remove("fixed", "top-10");
-      container.classList.remove("ml-1/6");
+      container.classList.remove("ml-[16.66666666667%]");
     } else {
       nav.classList.add("fixed", "top-10");
-      container.classList.add("ml-1/6");
+      container.classList.add("ml-[16.66666666667%]");
     }
   }
 }
