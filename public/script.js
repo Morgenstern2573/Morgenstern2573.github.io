@@ -1,6 +1,6 @@
-let nav = document.getElementById("nav-bar");
-let header = document.getElementById("about-header");
-let container = document.getElementById("about-cont");
+let aboutNav = document.getElementById("nav-bar");
+let aboutHeader = document.getElementById("about-header");
+let aboutContainer = document.getElementById("about-cont");
 
 let options = {
   root: null, // relative to document viewport
@@ -15,14 +15,14 @@ function makeSticky(entries, observer) {
 
   for (entry of entries) {
     if (entry.isIntersecting) {
-      nav.classList.remove("fixed", "top-10");
-      container.classList.remove("ml-[16.66666666667%]");
+      aboutNav.classList.remove("fixed", "top-10");
+      aboutContainer.classList.remove("ml-[16.66666666667%]");
     } else {
-      nav.classList.add("fixed", "top-10");
-      container.classList.add("ml-[16.66666666667%]");
+      aboutNav.classList.add("fixed", "top-10");
+      aboutContainer.classList.add("ml-[16.66666666667%]");
     }
   }
 }
 
-let observer = new IntersectionObserver(makeSticky, options);
-observer.observe(header);
+let stickyObserver = new IntersectionObserver(makeSticky, options);
+stickyObserver.observe(aboutHeader);
