@@ -24,5 +24,23 @@ function makeSticky(entries, observer) {
   }
 }
 
-let stickyObserver = new IntersectionObserver(makeSticky, options);
+function animateAboutSection(section) {
+  gsap.to(section, {duration: 1.5, opacity: 1})
+  gsap.to(section, {duration: 2, marginTop: 0})
+}
+
+function animateOnScroll(entries, observer) {
+  for (entry of entries) {
+    if (entry.isIntersecting) {
+      animateAboutSection("#about-cont")
+    } else {
+
+    }
+  }
+}
+
+
+const stickyObserver = new IntersectionObserver(makeSticky, options);
+const animationObserver = new IntersectionObserver(animateOnScroll, options)
 stickyObserver.observe(aboutHeader);
+animationObserver.observe(document.getElementById("about"))
