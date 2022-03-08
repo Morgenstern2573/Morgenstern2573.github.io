@@ -2,7 +2,7 @@ let aboutNav = document.getElementById("nav-bar");
 let aboutHeader = document.getElementById("about-header");
 let aboutContainer = document.getElementById("about-cont");
 
-let options = {
+const options = {
   root: null, // relative to document viewport
   rootMargin: "10px", // margin around root. Values are similar to css property. Unit-less values not allowed
   threshold: 1.0, // visible amount of item shown in relation to root
@@ -24,15 +24,22 @@ function makeSticky(entries, observer) {
   }
 }
 
+const animationOptions = {
+  root: null,
+  rootMargin: "10px",
+  threshold: 0.3,
+}
+
 function animateAboutSection(section) {
-  gsap.to(section, {duration: 1.5, opacity: 1})
-  gsap.to(section, {duration: 2, marginTop: 0})
+  gsap.to(section, {duration: .5, opacity: 1})
+  gsap.to(section, {duration: 1, ease: "none", y: 0})
 }
 
 function animateOnScroll(entries, observer) {
   for (entry of entries) {
     if (entry.isIntersecting) {
-      animateAboutSection("#about-cont")
+      const animationTarget = entry.target.querySelector(".animation-target")
+      animateAboutSection(animationTarget)
     } else {
 
     }
@@ -41,6 +48,8 @@ function animateOnScroll(entries, observer) {
 
 
 const stickyObserver = new IntersectionObserver(makeSticky, options);
-const animationObserver = new IntersectionObserver(animateOnScroll, options)
+const animationObserver = new IntersectionObserver(animateOnScroll, animationOptions)
 stickyObserver.observe(aboutHeader);
 animationObserver.observe(document.getElementById("about"))
+animationObserver.observe(document.getElementById("work"))
+animationObserver.observe(document.getElementById("contact"))

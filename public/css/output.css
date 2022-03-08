@@ -502,9 +502,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
-#about-cont {
+.animation-target {
   opacity: 0;
-  margin-top: 100px;
+  transform: translateY(100px);
 }
 
 .visible {
