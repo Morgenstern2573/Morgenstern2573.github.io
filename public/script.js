@@ -31,8 +31,8 @@ const animationOptions = {
 }
 
 function animateAboutSection(section) {
-  gsap.to(section, {duration: .5, opacity: 1})
-  gsap.to(section, {duration: 1, ease: "none", y: 0})
+  gsap.to(section, {duration: 0, opacity: 1})
+  gsap.to(section, {duration: 1, ease: "sine", y: 0})
 }
 
 function animateOnScroll(entries, observer) {
