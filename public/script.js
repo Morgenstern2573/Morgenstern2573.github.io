@@ -19,6 +19,7 @@ function makeSticky(entries, observer) {
       aboutContainer.classList.remove("ml-[16.66666666667%]");
     } else {
       aboutNav.classList.add("fixed", "top-10");
+      document.querySelector("#about>.animation-target").style.transform = "none";
       aboutContainer.classList.add("ml-[16.66666666667%]");
     }
   }
@@ -39,6 +40,9 @@ function animateOnScroll(entries, observer) {
   for (entry of entries) {
     if (entry.isIntersecting) {
       const animationTarget = entry.target.querySelector(".animation-target")
+      if (animationTarget.style.opacity === "1") {
+        return
+      }
       animateAboutSection(animationTarget)
     } else {
 
